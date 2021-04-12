@@ -1,0 +1,2 @@
+# MiningDashboard
+MiningDashBoard web-application
