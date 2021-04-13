@@ -1,0 +1,104 @@
+{% extends 'index.html' %}
+{% block center %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Kort Blog</a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Статьи<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Dashboard<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Выход<span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class = 'badge'>
+    <button type="button" class="btn btn-success btn-sm">
+        Mining <span class="badge badge-light">9</span>
+        <span class="sr-only">Mining</span>
+    </button>
+    <button type="button" class="btn btn-danger btn-sm">
+        Shutdown <span class="badge badge-light">9</span>
+        <span class="sr-only">Shutdown</span>
+    </button>
+    <button type="button" class="btn btn-warning btn-sm">
+        Los Connection <span class="badge badge-light">9</span>
+        <span class="sr-only">Los</span>
+    </button>
+    
+  </div>
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Host</th>
+        <th scope="col">Address</th>
+        <th scope="col">CPU</th>
+        <th scope="col">RAM</th>
+        <th scope="col">Hashrate</th>
+        <th scope="col">Command</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for host in hosts %}
+        {% if host['host_status'] == 'U' %}
+        <tr class="bg-success">
+            <th scope="row"></th>
+            <td>{{host['host_name']}}</td>
+            <td>{{host['host_addr']}}</td>
+            <td>{{host['host_cpu']}}</td>
+            <td>{{host['host_ram']}}</td>
+            <td>{{host['host_cpu']}}</td>
+            <td>
+                <button class = 'button' title="Shutdown"><img src = 'static/img/shutdown.png'></button>
+                <button class="button" title="Update"><img src = 'static/img/update.png'></button>
+                <button class="button" title="Log"><img src = 'static/img/logs.png'></button>
+            </td>
+        </tr>
+        {% endif %}
+        {% if host['host_status'] == 'D' %}
+        <tr class="bg-danger">
+            <th scope="row"></th>
+            <td>{{host['host_name']}}</td>
+            <td>{{host['host_addr']}}</td>
+            <td>{{host['host_cpu']}}</td>
+            <td>{{host['host_ram']}}</td>
+            <td>{{host['host_cpu']}}</td>
+            <td>
+                <button class = 'button' title="Shutdown"><img src = 'static/img/shutdown.png'></button>
+                <button class="button" title="Update"><img src = 'static/img/update.png'></button>
+                <button class="button" title="Log"><img src = 'static/img/logs.png'></button>
+            </td>
+        </tr>
+        {% endif %}
+        {% if host['host_status'] == 'L' %}
+        <tr class="bg-warning">
+            <th scope="row"></th>
+            <td>{{host['host_name']}}</td>
+            <td>{{host['host_addr']}}</td>
+            <td>{{host['host_cpu']}}</td>
+            <td>{{host['host_ram']}}</td>
+            <td>{{host['host_cpu']}}</td>
+            <td>
+                <button class = 'button' title="Shutdown"><img src = 'static/img/shutdown.png'></button>
+                <button class="button" title="Update"><img src = 'static/img/update.png'></button>
+                <button class="button" title="Log"><img src = 'static/img/logs.png'></button>
+            </td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock%}
