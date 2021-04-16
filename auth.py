@@ -1,6 +1,3 @@
-from aiohttp import web
-from views import index
-from auth import handler_root
 from aiohttp_security import check_permission, \
     is_anonymous, remember, forget, \
     setup as setup_security, SessionIdentityPolicy
@@ -41,16 +38,3 @@ async def handler_auth(request):
 
 async def setup_security(app, policy, UserPolicy):
     setup_security(app, policy, UserPolicy())
-
-def setup_routes(app):
-    #Add route to index page
-     app.add_routes([
-        web.get('/', index),
-        web.get('/login', handler_auth),
-        web.get('/logout', handler_logout),])
-
-def setup_static_routes(app):
-    app.router.add_static('/static/',
-                          path='static',
-                          name='static')
-
