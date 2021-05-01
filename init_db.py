@@ -6,7 +6,6 @@ from sqlalchemy import (
     MetaData, Table, Column, ForeignKey,
     Integer, String, Date
 )
-from db import hosts, logs
 from sqlalchemy.orm import sessionmaker, relationship
 
 basedir =os.path.abspath(os.path.dirname(__file__))
