@@ -1,8 +1,99 @@
 body{
     background-color: brown;
+    margin: 0;
+    padding: 0;
 }
 .button{
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+.navbar-brand {
+    font-weight: bold !important;
+    color:#fff !important;
+}
+.btn{
+    color: #fff !important;
+    border-color: #fff !important;
+}
+.btn:hover{
+    background-color: brown !important;
+}
+.nav-link:hover{
+    color: brown !important;
+}
+.row-title{
+    display: flex;
+    padding: 30px;
+    font-weight: bold;
+    color: #5b666a;
+}
+.row{
+    display: flex;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.column-posts{
+    flex:70%;
+    margin: 0;
+    padding: 10px;
+    border-top: 1px solid #cecece;
+}
+.column-news{
+    flex: 20%;
+    margin: 0;
+    padding: 10px;
+}
+.list-breadcrumbs{
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+.list-breadcrumbs li{
+    display: inline;
+    font-size: 0.8em;
+}
+.list-breadcrumbs a:hover{
+    text-decoration: none;
+    color: brown;
+}
+.read-more{
+    padding: 10px;
+    font-size: 0.9em;
+    border: 1px solid brown;
+    color: brown;
+}
+.read-more:hover{
+    border: 1px solid brown;
+    background-color: brown;
+    color: #fff;
+    text-decoration: none;
+}
+.post-panel{
+    display: flex;
+    border: 1px solid #cecece;
+    width: 35%;
+    border-radius: 5px;
+}
+.post-panel ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.post-panel li{
+    display: inline-flex;
+    padding: 5px;
+}
+.like{
+    padding-left: 5px;
+    font-weight: bold;
+}
+.li-views{
+    padding-left: 5px;
+    font-weight: bold;
+}
+.comment{
+    font-size: 0.8em;
+    font-weight: bold;
+    padding-left:5px;
 }

@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% block posts %}
+<div class = "post-title">
+    <h2>НАСА с партнерами из ЕС отправит новый зонд далеко за границы Солнечной системы</h2>
+</div>
+<div>
+    <ul class = "list-breadcrumbs">
+        <li><a href = "#">Научно-Популярное</a></li>
+        {% for cat in category %}
+        <li><a href = "{{ cat['link'] }}">{{ cat['name'] }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<div class = "post-desc">
+    <img src="" class="post-image" width="780" height="452">
+    <br>
+    <p>{{ post_desc }}<a href="#" class = 'read-more'>Читать далее &rarr; </a></p>
+    <div class = "post-panel">
+        <ul>
+            <li placeholder="Понравилось"><img src="../static/img/like.png"><span class="like">100</span></li>
+            <li><img src="../static/img/views.png"><span class="li-views">100</span></li>
+            <li><img src="../static/img/comment.png"><a href="#" class="comment">Комментировать</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

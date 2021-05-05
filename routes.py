@@ -1,5 +1,5 @@
 from aiohttp import web
-from views import index
+from views import index, dash
 from auth import handler_root
 from aiohttp_security import check_permission, \
     is_anonymous, remember, forget, \
@@ -48,6 +48,7 @@ def setup_routes(app):
     #Add route to index page
      app.add_routes([
         web.get('/', index),
+        web.get('/dash', dash),
         web.get('/login', handler_auth),
         web.get('/logout', handler_logout),
         web.get('/ws', websocket_handler)])
