@@ -7,6 +7,8 @@ from sqlalchemy import (
     Integer, String, Date
 )
 from sqlalchemy.orm import sessionmaker, relationship
+from werkzeug.security import check_password_hash, generate_password_hash
+import random
 
 basedir =os.path.abspath(os.path.dirname(__file__))
 name = '/BD.db'
@@ -52,15 +54,49 @@ class Logs(Base):
     def __repr__(self):
         return 'Host_ID: {}, UP: {}, Hash: {}'.format(self.host_id, self.last_up, self.last_hash)
 
+class User(Base):
+    __tablename__ = 'User'
+    id = Column(Integer, primary_key = True)
+    email = Column(String(200), nullable=False)
+    passwd_hash = Column(String(200), nullable=False)
+    login = Column(String(200), nullable=False)
+    api_key = Column(String(200))
+
+    def __init__(self, email, login):
+        self.email = email
+        self.login = login
+    
+    def __repr__(self):
+        return 'Email: {}, PWD: {}'.format(self.email, self.passwd_hash)
+    
+    def set_password(self, password):
+        self.passwd_hash = generate_password_hash(password)
+
+    def check_passwd(self, passwd):
+        return check_password_hash(self.passwd_hash, passwd)
+    
+    def set_apikey(self):
+        self.api_key = random.getrandbits(128)
+    
+    def check_apikey(self, key):
+        if self.api_key == key:
+            return True
+        else:
+            return False
+
 def sample_data():
     host = Hosts('Test', '192.168.1.9', '200GC', '8000', 'L')
     logs = Logs(1, datetime.datetime.now(), '2000h')
+    user = User('cort202@gmail.com', 'kort')
+    user.set_password('mar02031812')
     s = Session()
     s.add(host)
     s.add(logs)
+    s.add(user)
     s.commit()
     print(s.query(Hosts).all())
     print(s.query(Logs).all())
+    print(s.query(User).all())
 
 Base.metadata.create_all(engine)
 

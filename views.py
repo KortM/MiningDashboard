@@ -9,7 +9,15 @@ async def index(request):
         "page_name":"Публикации",
         "title": "Главная: Публикации"
     }
-    
+
+@aiohttp_jinja2.template('sign.html')
+async def signin(request):
+    return None
+
+async def reg(request):
+    data = await request.post()
+    print(data)
+
 @aiohttp_jinja2.template('mining.html')
 async def dash(request):
     s = Session()
