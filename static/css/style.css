@@ -97,6 +97,9 @@ body{
     font-weight: bold;
     padding-left:5px;
 }
+
+/* Верстка для страницы регистрации */
+
 #signin{
     position: absolute;
     top:50%;
@@ -131,7 +134,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 200px;
+    min-height: 300px;
+    min-width: 300px;
 }
 #sign-form input{
     padding: 10px;
@@ -141,11 +145,20 @@ body{
 #sign-form input:hover{
     border:1px solid steelblue;
 }
+#sign-form input:focus, input:active, input:hover{
+    border:1px solid steelblue;
+    outline: none;
+}
 #sign-form input[type=submit]{
     margin-top:10px;
     background-color: maroon;
     color: #fff;
 }
+.errorMsg{
+    color: red;
+    font-size: 0.7em;
+}
+
 @font-face {
     font-family: "Qa";
     src: url(../fonts/Qanelas-HeavyItalic.ttf);
